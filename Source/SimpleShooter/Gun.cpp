@@ -1,5 +1,6 @@
 #include "Gun.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 /**************************/
 /******PUBLIC METHODS******/
@@ -24,6 +25,7 @@ void AGun::Tick(float DeltaTime)
 void AGun::PullTrigger()
 {
 	UE_LOG(LogTemp, Warning, TEXT("SHOOT!"));
+	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
 }
 
 /*************************/
