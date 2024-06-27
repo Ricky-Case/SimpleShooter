@@ -1,7 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "ShooterCharacter.h"
+#include "Gun.h"
 
 /**************************/
 /******PUBLIC METHODS******/
@@ -41,6 +39,8 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
 }
 
 /***************************/
