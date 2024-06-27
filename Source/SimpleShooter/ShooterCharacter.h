@@ -24,6 +24,7 @@ private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void LookUpRate(float AxisValue);
+	void Shoot();
 	void TurnRate(float AxisValue);
 
 	UPROPERTY(EditAnywhere)

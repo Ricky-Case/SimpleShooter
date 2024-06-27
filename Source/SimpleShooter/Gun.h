@@ -15,6 +15,7 @@ public:
 	AGun();
 
 	virtual void Tick(float DeltaTime) override;
+	void PullTrigger();
 
 protected:
 	virtual void BeginPlay() override;
