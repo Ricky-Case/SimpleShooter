@@ -1,5 +1,6 @@
 #include "ShooterAIController.h"
 #include "Kismet/GameplayStatics.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 /**************************/
 /******PUBLIC METHODS******/
@@ -33,5 +34,11 @@ void AShooterAIController::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), TargetPlayer);
-	if(AIBehavior) { RunBehaviorTree(AIBehavior); }
+	
+	if(AIBehavior && PlayerPawn)
+	{
+		RunBehaviorTree(AIBehavior);
+
+		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+	}
 }
