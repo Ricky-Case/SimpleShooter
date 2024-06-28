@@ -17,6 +17,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+	
+	UFUNCTION(BlueprintPure)
+	bool IsDead() const;
 
 protected:
 	virtual void BeginPlay() override;
