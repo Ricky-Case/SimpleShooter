@@ -1,6 +1,7 @@
 #include "Gun.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/DamageEvents.h"
 #include "DrawDebugHelpers.h"
 
 /**************************/
@@ -44,6 +45,12 @@ void AGun::PullTrigger()
 	if(bHitSuccess)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location);
+		
+		if(AActor* HitActor = HitResult.GetActor())
+		{
+			FPointDamageEvent DamageEvent(Damage, HitResult, ViewpointRotation.Vector(), nullptr);
+			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
+		}
 	}
 }
 
