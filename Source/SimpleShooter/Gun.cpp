@@ -37,7 +37,6 @@ void AGun::PullTrigger()
 	OwnerController->GetPlayerViewPoint(ViewpointLocation, ViewpointRotation);
 
 	FVector End = (ViewpointLocation + ViewpointRotation.Vector() * FireRange);
-	// TODO: Line Tracing
 	
 	FHitResult HitResult;
 	bool bHitSuccess = GetWorld()->LineTraceSingleByChannel(HitResult, ViewpointLocation, End, ECollisionChannel::ECC_GameTraceChannel1);

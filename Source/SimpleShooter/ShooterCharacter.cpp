@@ -34,6 +34,16 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	}
 }
 
+float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Health -= FMath::Min(Health, DamageToApply);
+
+	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! -- HEALTH: %f"), Health);
+
+	return DamageToApply;
+}
+
 /*************************/
 /****PROTECTED METHODS****/
 /*************************/
@@ -41,6 +51,8 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	Health = MaxHealth;
 
 	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
 	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
