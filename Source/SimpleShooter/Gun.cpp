@@ -25,7 +25,6 @@ void AGun::Tick(float DeltaTime)
 
 void AGun::PullTrigger()
 {
-	UE_LOG(LogTemp, Warning, TEXT("SHOT FIRED!"));
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
 	
 	AController* OwnerController = Cast<APawn>(GetOwner())->GetController();
@@ -44,7 +43,7 @@ void AGun::PullTrigger()
 
 	if(bHitSuccess)
 	{
-		DrawDebugPoint(GetWorld(), HitResult.Location, 20, FColor::Red, true);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location);
 	}
 }
 
