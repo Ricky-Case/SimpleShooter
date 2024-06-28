@@ -19,4 +19,9 @@ protected:
 
 private:
 	APawn* PlayerPawn = nullptr;
+
+	UPROPERTY(EditAnywhere)
+	int TargetPlayer = 0;
+	UPROPERTY(EditAnywhere)
+	float AcceptanceRadius = 200.0f;
 };
