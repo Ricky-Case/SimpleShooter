@@ -40,5 +40,6 @@ void AShooterAIController::BeginPlay()
 		RunBehaviorTree(AIBehavior);
 
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
+		GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
 	}
 }
