@@ -1,6 +1,7 @@
 #include "ShooterCharacter.h"
 #include "Components/SkinnedMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "SimpleShooterGameModeBase.h"
 #include "Gun.h"
 
 /**************************/
@@ -47,6 +48,8 @@ float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const &Dama
 	{
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		
+		if(ASimpleShooterGameModeBase* GameMode = GetWorld()->GetAuthGameMode<ASimpleShooterGameModeBase>()) { GameMode->PawnKilled(this); }
 	}
 
 	return DamageToApply;
