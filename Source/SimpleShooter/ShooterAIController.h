@@ -21,7 +21,9 @@ private:
 	APawn* PlayerPawn = nullptr;
 
 	UPROPERTY(EditAnywhere)
-	int TargetPlayer = 0;
+	int32 TargetPlayer = 0;
+	UPROPERTY(EditAnywhere)
+	int32 PatrolMovementDistance = 3000.0f;
 	UPROPERTY(EditAnywhere)
 	UBehaviorTree* AIBehavior;
 };
