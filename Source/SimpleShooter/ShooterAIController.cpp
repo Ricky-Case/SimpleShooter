@@ -40,6 +40,6 @@ void AShooterAIController::BeginPlay()
 
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PatrolLocationA"), GetPawn()->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsVector(TEXT("PatrolLocationB"), (GetPawn()->GetActorForwardVector() * PatrolMovementDistance));
+		GetBlackboardComponent()->SetValueAsVector(TEXT("PatrolLocationB"), GetPawn()->GetActorLocation() + (GetPawn()->GetActorForwardVector() * PatrolMovementDistance));
 	}
 }
