@@ -44,6 +44,8 @@ float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const &Dama
 	return DamageToApply;
 }
 
+void AShooterCharacter::Shoot() { Gun->PullTrigger(); }
+
 bool AShooterCharacter::IsDead() const { return (Health <= 0); }
 
 /*************************/
@@ -70,4 +72,3 @@ void AShooterCharacter::MoveForward(float AxisValue) { AddMovementInput(GetActor
 void AShooterCharacter::MoveRight(float AxisValue) { AddMovementInput(GetActorRightVector() * AxisValue); }
 void AShooterCharacter::LookUpRate(float AxisValue) { AddControllerPitchInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds()); }
 void AShooterCharacter::TurnRate(float AxisValue) { AddControllerYawInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds()); }
-void AShooterCharacter::Shoot() { Gun->PullTrigger(); }

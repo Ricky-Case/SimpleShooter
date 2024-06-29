@@ -18,6 +18,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 	
+	void Shoot();
+	
 	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
 
@@ -28,7 +30,6 @@ private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
 	void LookUpRate(float AxisValue);
-	void Shoot();
 	void TurnRate(float AxisValue);
 
 	UPROPERTY(EditAnywhere)
