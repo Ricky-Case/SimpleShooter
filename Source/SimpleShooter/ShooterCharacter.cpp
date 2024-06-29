@@ -1,5 +1,6 @@
 #include "ShooterCharacter.h"
 #include "Components/SkinnedMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Gun.h"
 
 /**************************/
@@ -37,9 +38,16 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 float AShooterCharacter::TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	float DamageToApply = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-	Health -= FMath::Min(Health, DamageToApply);
+	DamageToApply = FMath::Min(Health, DamageToApply);
+	Health -= DamageToApply;
 
 	UE_LOG(LogTemp, Warning, TEXT("DAMAGE TAKEN! -- HEALTH: %f"), Health);
+
+	if(IsDead())
+	{
+		DetachFromControllerPendingDestroy();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
 
 	return DamageToApply;
 }
