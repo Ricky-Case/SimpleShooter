@@ -10,7 +10,5 @@ class SIMPLESHOOTER_API ASimpleShooterGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 
 public:
-	ASimpleShooterGameModeBase();
-
 	virtual void PawnKilled(APawn* Pawn);
 };
