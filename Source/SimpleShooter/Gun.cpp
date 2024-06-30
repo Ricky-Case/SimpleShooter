@@ -2,7 +2,6 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/DamageEvents.h"
-#include "DrawDebugHelpers.h"
 
 /**************************/
 /******PUBLIC METHODS******/
@@ -29,6 +28,8 @@ void AGun::PullTrigger()
 	if(AController* OwnerController = GetOwnerController())
 	{
 		UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
+		UGameplayStatics::SpawnSoundAttached(MuzzleSound, Mesh, TEXT("MuzzleFlashSocket"));
+
 		FHitResult HitResult;
 		FVector ShotDirection;
 
@@ -36,7 +37,8 @@ void AGun::PullTrigger()
 
 		if(bHitSuccess)
 		{
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location);
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location, ShotDirection.Rotation());
+			UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ImpactSound, HitResult.Location, ShotDirection.Rotation());
 			
 			if(AActor* HitActor = HitResult.GetActor())
 			{

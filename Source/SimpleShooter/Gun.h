@@ -31,6 +31,10 @@ private:
 	USkeletalMeshComponent* Mesh;
 	
 	UPROPERTY(EditAnywhere)
+	USoundBase* MuzzleSound;
+	UPROPERTY(EditAnywhere)
+	USoundBase* ImpactSound;
+	UPROPERTY(EditAnywhere)
 	UParticleSystem* MuzzleFlash;
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* ImpactEffect;
