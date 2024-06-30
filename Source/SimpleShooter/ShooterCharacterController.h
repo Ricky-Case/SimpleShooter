@@ -4,6 +4,8 @@
 #include "GameFramework/PlayerController.h"
 #include "ShooterCharacterController.generated.h"
 
+class UUserWidget;
+
 class AActor;
 
 UCLASS()
@@ -15,6 +17,9 @@ public:
 	virtual void GameHasEnded(AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
 
 private:
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> LoseScreenClass;
+
 	UPROPERTY(EditAnywhere)
 	float RestartDelay = 5.0f;
 
