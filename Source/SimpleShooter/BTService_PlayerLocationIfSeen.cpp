@@ -19,22 +19,7 @@ void UBTService_PlayerLocationIfSeen::TickNode(UBehaviorTreeComponent& OwnerComp
 
 	if(APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), TargetPlayer))
 	{
-		if(OwnerComp.GetAIOwner()->LineOfSightTo(PlayerPawn)) { OwnerComp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), PlayerPawn->GetActorLocation()); }
+		if(OwnerComp.GetAIOwner()->LineOfSightTo(PlayerPawn)) { OwnerComp.GetBlackboardComponent()->SetValueAsObject(GetSelectedBlackboardKey(), PlayerPawn); }
 		else { OwnerComp.GetBlackboardComponent()->ClearValue(GetSelectedBlackboardKey()); }
 	}
 }
-
-/*
-	if(PlayerPawn)
-	{
-		if(LineOfSightTo(PlayerPawn))
-		{
-			GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-			GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
-		}
-		else
-		{
-			GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
-		}
-	}
-*/
