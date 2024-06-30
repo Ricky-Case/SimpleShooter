@@ -11,4 +11,10 @@ class SIMPLESHOOTER_API ASimpleShooterGameModeBase : public AGameModeBase
 
 public:
 	virtual void PawnKilled(APawn* Pawn);
+
+protected:
+	void EndGame(bool bIsPlayerWinner);
+
+private:
+
 };
