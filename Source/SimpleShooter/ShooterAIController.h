@@ -13,6 +13,7 @@ class SIMPLESHOOTER_API AShooterAIController : public AAIController
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	bool IsDead() const;
 
 protected:
 	virtual void BeginPlay() override;
@@ -23,7 +24,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	int32 TargetPlayer = 0;
 	UPROPERTY(EditAnywhere)
-	int32 PatrolMovementDistance = 3000.0f;
+	float PatrolMovementDistance = 2500.0f;
 	UPROPERTY(EditAnywhere)
 	UBehaviorTree* AIBehavior;
 };
