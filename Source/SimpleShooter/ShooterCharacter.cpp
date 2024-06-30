@@ -58,6 +58,8 @@ void AShooterCharacter::Shoot() { Gun->PullTrigger(); }
 
 bool AShooterCharacter::IsDead() const { return (Health <= 0); }
 
+float AShooterCharacter::GetHealthPercent() const { return Health / MaxHealth; }
+
 /*************************/
 /****PROTECTED METHODS****/
 /*************************/
