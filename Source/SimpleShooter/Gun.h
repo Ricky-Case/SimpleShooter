@@ -21,18 +21,20 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	bool ExecuteGunTrace(FHitResult &HitResultOut, FVector &ShotDirectionOut, AController* OwnerController);
+	AController* GetOwnerController() const;
+
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
 
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* Mesh;
-
+	
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* MuzzleFlash;
-
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* ImpactEffect;
-
+	
 	UPROPERTY(EditAnywhere)
 	float FireRange = 1000.0f;
 
