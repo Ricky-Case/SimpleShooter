@@ -1,6 +1,7 @@
 #include "ShooterCharacter.h"
 #include "Components/SkinnedMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "SimpleShooterGameModeBase.h"
 #include "Gun.h"
 
@@ -24,7 +25,7 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 	if(PlayerInputComponent)
 	{
-		PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+		PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Jump);
 		PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
 		PlayerInputComponent->BindAxis(TEXT("Turn"), this, &APawn::AddControllerYawInput);
 
@@ -84,3 +85,10 @@ void AShooterCharacter::MoveForward(float AxisValue) { AddMovementInput(GetActor
 void AShooterCharacter::MoveRight(float AxisValue) { AddMovementInput(GetActorRightVector() * AxisValue); }
 void AShooterCharacter::LookUpRate(float AxisValue) { AddControllerPitchInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds()); }
 void AShooterCharacter::TurnRate(float AxisValue) { AddControllerYawInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds()); }
+
+void AShooterCharacter::Jump()
+{
+	ACharacter::Jump();
+
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), JumpSound, GetActorLocation());
+}

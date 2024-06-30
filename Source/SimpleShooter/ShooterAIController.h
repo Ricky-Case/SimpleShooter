@@ -24,7 +24,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	int32 TargetPlayer = 0;
 	UPROPERTY(EditAnywhere)
-	float PatrolMovementDistance = 2500.0f;
+	float PatrolMovementDistance = 1500.0f;
 	UPROPERTY(EditAnywhere)
 	UBehaviorTree* AIBehavior;
 };

@@ -34,6 +34,7 @@ private:
 	void MoveRight(float AxisValue);
 	void LookUpRate(float AxisValue);
 	void TurnRate(float AxisValue);
+	void Jump();
 
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50.0f;
@@ -41,6 +42,9 @@ private:
 	float MaxHealth = 100.0f;
 	UPROPERTY(VisibleAnywhere)
 	float Health;
+
+	UPROPERTY(EditDefaultsOnly)
+	USoundBase* JumpSound;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AGun> GunClass;
