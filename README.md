@@ -1,11 +1,13 @@
 # SimpleShooter
 Developed as part of the GameDev.tv "Unreal Engine 5 C++ Developer" course of Udemy.
 
-The primary focus of this project was to learn how to use the following Unreal Engine 5 systems:
+The primary focus of this project was to learn how to develop the following using Unreal Engine 5:
 - AI
 - Animation
 - Audio
+- Game Loops
 - Navigation
+- User Interface
 
 # Required Assets
 - [Modular SciFi Season 1 Starter Bundle](https://www.unrealengine.com/marketplace/en-US/product/modular-scifi-season-1-starter-bundle)
