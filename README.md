@@ -1,4 +1,4 @@
-# SimpleShooter
+# Simple Third Person Shooter
 Developed as part of the GameDev.tv "Unreal Engine 5 C++ Developer" course of Udemy.
 
 The primary focus of this project was to learn how to develop the following using Unreal Engine 5:
